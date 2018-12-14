@@ -153,7 +153,7 @@ if OVERRIDE_ME:
     hexchat.hook_command('ME', me_cb)
 
 # EM emojify command
-hexchat.hook_command('EM', em_cb, help='Usage: EM <text>, converts aliases emojis unicode encoded text')
+hexchat.hook_command('EM', em_cb, help='Usage: EM <text>, converts aliases emojis into unicode encoded text')
 
 hexchat.hook_unload(unload_cb)
 
