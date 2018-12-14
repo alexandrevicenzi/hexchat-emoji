@@ -24,6 +24,11 @@ Copy `emoji.py` to `~/.config/hexchat/addons`.
 
 > HexChat path may not be the same on your distro.
 
+## Settings
+
+Emoji addon has a few settings you can change.
+They are located in the top of `emoji.py` as constants.
+
 ## License
 
 MIT
