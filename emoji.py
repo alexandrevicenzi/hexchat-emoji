@@ -52,7 +52,6 @@ EMOTICON_TO_EMOJI_ALIASES = {
     ':(': ':disappointed:',
     '):': ':disappointed:',
     ':-(': ':disappointed:',
-    ':/': ':confused:',
     ':-/': ':confused:',
     ':\\': ':confused:',
     ':-\\': ':confused:',
