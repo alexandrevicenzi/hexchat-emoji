@@ -69,13 +69,13 @@ EMOTICON_TO_EMOJI_ALIASES = {
 }
 
 
-RE_GROUPS = '|'.join(['({0})'.format(re.escape(x)) for x in EMOTICON_TO_EMOJI_ALIASES])
+RE_GROUPS = '|'.join([r'({0}(?=\s|$))'.format(re.escape(x)) for x in EMOTICON_TO_EMOJI_ALIASES])
 RE_EMOTICON_TO_EMOJI_ALIASES = re.compile(RE_GROUPS)
 
 
 def emojize(msg):
     if EMOTICON_TO_EMOJI:
-        msg = RE_EMOTICON_TO_EMOJI_ALIASES.sub(lambda match: EMOTICON_TO_EMOJI_ALIASES[match.group(0)], msg)
+        msg = RE_EMOTICON_TO_EMOJI_ALIASES.sub(lambda match: EMOTICON_TO_EMOJI_ALIASES[match.group()], msg)
 
     return emojis.encode(msg)
 
