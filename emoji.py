@@ -82,6 +82,7 @@ EMOTICON_TO_EMOJI_ALIASES = {
     ";-p": ":stuck_out_tongue_winking_eye:",
     ";b": ":stuck_out_tongue_winking_eye:",
     ";-b": ":stuck_out_tongue_winking_eye:",
+    "}:>": ":smiling_imp:",
 }
 
 
