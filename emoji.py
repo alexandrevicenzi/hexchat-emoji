@@ -1,5 +1,5 @@
 __module_name__ = "emoji"
-__module_version__ = "2.0"
+__module_version__ = "2.1"
 __module_description__ = "Emoji support for HexChat"
 
 import emojis
