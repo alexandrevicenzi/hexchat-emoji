@@ -105,11 +105,16 @@ def build_re_groups():
     """
     for alias in EMOTICON_TO_EMOJI_ALIASES:
         escaped = re.escape(alias)
-        yield rf"({escaped}(?=\s|$))"
+        yield rf"((^| ){escaped}(?=\s|$))"
 
 
 def get_emoji_alias(match):
-    return EMOTICON_TO_EMOJI_ALIASES[match.group()]
+    ms = match.group().lstrip()
+    if ms == match.group():
+        pfx = ""
+    else:
+        pfx = " "
+    return pfx + EMOTICON_TO_EMOJI_ALIASES[ms]
 
 
 RE_GROUPS = "|".join(build_re_groups())
