@@ -99,26 +99,17 @@ EMOTICON_TO_EMOJI_ALIASES = {
 def build_re_groups():
     """
         Build a regex string based on the emoticon to emoji aliases
-
-        The regex includes a lookahed to avoid replacing characters
-        inside a string, such as URLs
     """
     for alias in EMOTICON_TO_EMOJI_ALIASES:
-        escaped = re.escape(alias)
-        yield rf"((^| ){escaped}(?=\s|$))"
+        yield re.escape(alias)
 
 
 def get_emoji_alias(match):
-    ms = match.group().lstrip()
-    if ms == match.group():
-        pfx = ""
-    else:
-        pfx = " "
-    return pfx + EMOTICON_TO_EMOJI_ALIASES[ms]
+    return match.group(1) + EMOTICON_TO_EMOJI_ALIASES[match.group(2)]
 
 
 RE_GROUPS = "|".join(build_re_groups())
-RE_EMOTICON_TO_EMOJI_ALIASES = re.compile(RE_GROUPS)
+RE_EMOTICON_TO_EMOJI_ALIASES = re.compile("(^|\s)(" + RE_GROUPS + ")(?=\s|$)")
 
 
 def emojize(msg, emoticon_to_emoji=EMOTICON_TO_EMOJI):
