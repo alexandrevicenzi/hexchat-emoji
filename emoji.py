@@ -1,5 +1,5 @@
 __module_name__ = "emoji"
-__module_version__ = "2.0"
+__module_version__ = "2.1"
 __module_description__ = "Emoji support for HexChat"
 
 import emojis
@@ -82,6 +82,7 @@ EMOTICON_TO_EMOJI_ALIASES = {
     ";-p": ":stuck_out_tongue_winking_eye:",
     ";b": ":stuck_out_tongue_winking_eye:",
     ";-b": ":stuck_out_tongue_winking_eye:",
+    "}:>": ":smiling_imp:",
 }
 
 
@@ -98,21 +99,17 @@ EMOTICON_TO_EMOJI_ALIASES = {
 def build_re_groups():
     """
         Build a regex string based on the emoticon to emoji aliases
-
-        The regex includes a lookahed to avoid replacing characters
-        inside a string, such as URLs
     """
     for alias in EMOTICON_TO_EMOJI_ALIASES:
-        escaped = re.escape(alias)
-        yield rf"({escaped}(?=\s|$))"
+        yield re.escape(alias)
 
 
 def get_emoji_alias(match):
-    return EMOTICON_TO_EMOJI_ALIASES[match.group()]
+    return match.group(1) + EMOTICON_TO_EMOJI_ALIASES[match.group(2)]
 
 
 RE_GROUPS = "|".join(build_re_groups())
-RE_EMOTICON_TO_EMOJI_ALIASES = re.compile(RE_GROUPS)
+RE_EMOTICON_TO_EMOJI_ALIASES = re.compile("(^|\s)(" + RE_GROUPS + ")(?=\s|$)")
 
 
 def emojize(msg, emoticon_to_emoji=EMOTICON_TO_EMOJI):
