@@ -41,7 +41,6 @@ EMOTICON_TO_EMOJI = True
 EMOTICON_TO_EMOJI_ALIASES = {
     "<3": ":heart:",
     "</3": ":broken_heart:",
-    "8)": ":sunglasses:",
     "8-)": ":sunglasses:",
     "D:": ":anguished:",
     ":'(": ":cry:",
